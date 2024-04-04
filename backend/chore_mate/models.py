@@ -2,8 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Person(models.Model):
-    username = models.CharField(max_length=50, blank=False, null=False)
-    password = models.CharField(max_length=50, blank=False, null=False)
     person_id = models.AutoField(primary_key=True)
     parent_user = models.BooleanField(default=False)
     profile_img = models.TextField(blank=True)
