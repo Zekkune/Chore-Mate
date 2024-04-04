@@ -5,15 +5,16 @@ import './App.css'
 import AuthLogin from './components/AuthLogin'
 import AuthLogout from './components/AuthLogout'
 import AuthProfile from './components/AuthProfile'
+import Main from './components/Main'
 
 function App() {
   
 
   return (
     <>
-      <AuthLogin></AuthLogin>
-      <AuthProfile></AuthProfile>
-      <AuthLogout></AuthLogout>
+
+      <Main></Main>
+      <h2 className='text-green-900'>gello</h2>
 
     </>
   )
