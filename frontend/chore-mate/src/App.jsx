@@ -1,21 +1,34 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes, RouterProvider } from 'react-router-dom'
 import './App.css'
-import AuthLogin from './components/AuthLogin'
-import AuthLogout from './components/AuthLogout'
-import AuthProfile from './components/AuthProfile'
+import DataContext  from "./DataContext"
 import Main from './components/Main'
+import Home from './components/Home'
+import Layout from './components/Layout'
+import LogIn from './components/LogIn'
+import SignUp from './components/SignUp'
+import rootReducer from './reducers'; // If the file is named reducers.js or index.js
+
 
 function App() {
-  
 
   return (
     <>
-
-      <Main></Main>
-      <h2 className='text-green-900'>gello</h2>
-
+    
+          
+            <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route exact path='/login' element={<LogIn/>}/>
+              <Route path='/signup' element={<SignUp/>}/>
+              {/* <Route exact path='/reset-password' component={<ResetPassword/>}/>
+              <Route exact path='/password/reset/confirm/:uid/:token' component={<ResetPasswordConfirm/>}/>
+              <Route exact path='/activate/:uid/:token' component={<Home/>}/> */}
+              {/* <Route exact path='' component={}/> */}
+            </Routes>
+          
+    
+    
     </>
   )
 }

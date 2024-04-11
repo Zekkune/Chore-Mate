@@ -1,6 +1,15 @@
 from rest_framework import serializers
-from .models import Person, Chore, Message
+from .models import Person, Chore, Message, User
+from djoser.serializers import UserCreateSerializer
+from django.contrib.auth import get_user_model
 
+
+
+class UserCreateSerializer(UserCreateSerializer):
+    class Meta(UserCreateSerializer.Meta):
+        model = User
+        fields = ('id', 'email', 'username', 'password')
+        
 class MessageSerializer(serializers.HyperlinkedModelSerializer):
     sender = serializers.PrimaryKeyRelatedField(
         queryset = Person.objects.all(),

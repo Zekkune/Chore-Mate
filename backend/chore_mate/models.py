@@ -1,9 +1,45 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 # Create your models here.
+
+class UserAccountManager(BaseUserManager):
+    def create_user(self, email, username, password=None):
+        if not email:
+            raise ValueError('Users Need an Email to Continue')
+        
+        email = self.normalize_email(email)
+        user = self.model(email=email, username=username)
+
+        user.set_password(password)
+        user.save()
+
+        return user
+
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(max_length=255, unique=True)
+    username = models.CharField(max_length=100, unique=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserAccountManager()
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
+    def get_full_name(self):
+        return self.username
+    
+    def get_short_name(self):
+        return self.username
+    
+    def __str__(self):
+        return self.username
+
+
 class Person(models.Model):
     person_id = models.AutoField(primary_key=True)
-    parent_user = models.BooleanField(default=False)
+    is_parent = models.BooleanField(default=False)
     profile_img = models.TextField(blank=True)
     first_name = models.CharField(max_length=100, blank=False, null=False)
     last_name = models.CharField(max_length=100, blank=False, null=False)

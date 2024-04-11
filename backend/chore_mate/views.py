@@ -2,6 +2,8 @@
 from rest_framework import generics
 from .serializers import PersonSerializer, ChoreSerializer, MessageSerializer
 from .models import Person, Chore, Message
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
 
 class PersonList(generics.ListCreateAPIView):
     queryset = Person.objects.all()
@@ -26,4 +28,5 @@ class MessageList(generics.ListCreateAPIView):
 class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
+
 

@@ -1,9 +1,7 @@
 from django.contrib import admin
+from .models import Person, Chore, Message, User
 
-# Register your models here.
-
-from django.contrib import admin
-from .models import Person, Chore, Message
 admin.site.register(Person)
 admin.site.register(Chore)
 admin.site.register(Message)
+admin.site.register(User)
