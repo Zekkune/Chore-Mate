@@ -1,11 +1,10 @@
 import LogIn from "./LogIn"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
     return (
         <div>
-            <p>
-                nav
-            </p>
+            <Link to='/login'>Login</Link>
         </div>
     )
 }

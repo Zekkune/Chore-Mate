@@ -3,9 +3,11 @@ from django.urls import path, include, re_path
 from django.contrib import admin
 from django.views.generic import TemplateView
 from chore_mate import views
+from chore_mate.views import get_csrf_token
 
 
 urlpatterns = [
+    path('api/csrf/', get_csrf_token, name='get_csrf_token'),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('admin/', admin.site.urls),
@@ -19,3 +21,5 @@ urlpatterns = [
     ]
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
+
+

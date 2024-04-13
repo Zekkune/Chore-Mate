@@ -5,9 +5,9 @@ import './App.css'
 import DataContext  from "./DataContext"
 import Main from './components/Main'
 import Home from './components/Home'
-import Layout from './components/Layout'
 import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
+import ChoreMateHome from './components/ChoreMateHome'
 import rootReducer from './reducers'; // If the file is named reducers.js or index.js
 
 
@@ -17,15 +17,18 @@ function App() {
     <>
     
           
-            <Routes>
+          <Routes>
               <Route path='/' element={<Home/>}/>
               <Route exact path='/login' element={<LogIn/>}/>
               <Route path='/signup' element={<SignUp/>}/>
+              <Route path='/choremate' element={<ChoreMateHome/>}/>
               {/* <Route exact path='/reset-password' component={<ResetPassword/>}/>
               <Route exact path='/password/reset/confirm/:uid/:token' component={<ResetPasswordConfirm/>}/>
               <Route exact path='/activate/:uid/:token' component={<Home/>}/> */}
               {/* <Route exact path='' component={}/> */}
-            </Routes>
+          </Routes>
+          
+            
           
     
     
