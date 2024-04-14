@@ -40,4 +40,4 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Person
-        fields = ('person_id', 'first_name', 'last_name', 'age', 'chores', 'messages', 'profile_img')
+        fields = ('person_id', 'first_name', 'last_name', 'age', 'is_parent', 'chores', 'messages', 'profile_img')

@@ -9,7 +9,9 @@ import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
 import Activate from './components/Activate'
 import ChoreMateHome from './components/ChoreMateHome'
-import rootReducer from './reducers'; // If the file is named reducers.js or index.js
+import rootReducer from './reducers'
+import AddPerson from './components/AddPerson'
+import PersonDetails from './components/PersonDetails'
 
 
 
@@ -24,13 +26,10 @@ function App() {
               <Route exact path='/login' element={<LogIn/>}/>
               <Route path='/signup' element={<SignUp/>}/>
               <Route path='/choremate' element={<ChoreMateHome/>}/>
+              <Route path='/api/create_person/' element={<AddPerson/>}/>
+              <Route path='/people/:person_id' element={<PersonDetails/>}/>
               <Route path='/activate/:uid/:token' element={<Activate/>}/>
           </Routes>
-          
-            
-          
-    
-    
     </>
   )
 }

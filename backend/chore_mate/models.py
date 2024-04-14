@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Person(models.Model):
     person_id = models.AutoField(primary_key=True)
-    is_parent = models.BooleanField(default=False)
+    is_parent = models.BooleanField(default=False, blank=False, null=False)
     profile_img = models.TextField(blank=True)
     first_name = models.CharField(max_length=100, blank=False, null=False)
     last_name = models.CharField(max_length=100, blank=False, null=False)
