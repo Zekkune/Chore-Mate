@@ -7,7 +7,11 @@ import {
     LOAD_USER_FAIL,
     AUTHENTICATED_SUCCESS,
     AUTHENTICATED_FAIL,
+    SIGNUP_SUCCESS,
+    SIGNUP_FAIL,
     LOGOUT,
+    ACTIVATION_SUCCESS,
+    ACTIVATION_FAIL,
 } from './types'
 
 export const checkAuth = () => async dispatch => {
@@ -74,6 +78,28 @@ export const load_user = () => async dispatch => {
     }
 }
 
+    export const signup = (email, username, password, re_password) => async dispatch => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const body = JSON.stringify({ email, username, password, re_password })
+        try {
+            const res = await axios.post(`${REACT_APP_API_URL}/auth/users/`, body, config)
+    
+            dispatch({
+                type: SIGNUP_SUCCESS,
+                payload: res.data
+            })
+    
+        } catch (error){
+            dispatch({
+                type: SIGNUP_FAIL
+            })
+        }
+    }
+
 export const login = (username, password) => async dispatch => {
     const config = {
         headers: {
@@ -95,6 +121,29 @@ export const login = (username, password) => async dispatch => {
     } catch (error){
         dispatch({
             type: LOGIN_FAIL
+        })
+    }
+}
+
+export const verify = (uid, token) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    const body = JSON.stringify({ uid, token })
+
+    try {
+        await axios.post(`${REACT_APP_API_URL}/auth/users/activation/`, body, config)
+
+        dispatch({
+            type: ACTIVATION_SUCCESS,
+        })
+
+    } catch (error){
+        dispatch({
+            type: ACTIVATION_FAIL
         })
     }
 }

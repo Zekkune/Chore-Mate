@@ -6,6 +6,7 @@ import { login } from "../actions/auth";
 import axios from 'axios'
 import SignUp from "./SignUp";
 import REACT_APP_API_URL from '../../globals'
+import Navbar from "./Navbar";
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
@@ -21,12 +22,10 @@ const Login = ({ login, isAuthenticated }) => {
 
     const getToken = async () => {
         let response = await axios.get(`${REACT_APP_API_URL}/api/csrf/`)
-        console.log(response)
         setCsrfToken(response.data.csrfToken)
     }
     useEffect(() => {
         getToken()
-        console.log(csrfToken)
     }, []);
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -42,12 +41,13 @@ const Login = ({ login, isAuthenticated }) => {
     }
 
     if (isAuthenticated) {
-        navigate('/choremate')
+        navigate('/')
         return null
     }
 
     return (
-       
+        <>
+        <Navbar className='mt-0 mb-6'></Navbar>
         <div className="mt-5 bg-gray-100 rounded-lg shadow-md p-8 max-w-md mx-auto">
         <h1 className="text-3xl font-bold mb-2 text-blue-500">Sign In!</h1>
         <p className="text-gray-600 mb-6">Chore-Mate requires users to be signed in.</p>
@@ -84,7 +84,7 @@ const Login = ({ login, isAuthenticated }) => {
           <p className="mt-4">Dont have an account? <Link className='text-blue-700 hover:text-blue-400' to = '/signup'>Sign Up</Link></p>
         </form>
       </div>
-      
+      </>
 
         
     )

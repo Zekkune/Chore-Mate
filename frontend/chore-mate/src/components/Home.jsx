@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
     return (
+        <>
+        <Navbar></Navbar>
         <div className="mx-auto max-w-4xl px-4 mt-6">
         <div className="bg-gray-800 py-12 px-6 rounded-lg">
         <div className="max-w-4xl mx-auto text-center">
@@ -14,6 +16,7 @@ export default function Home() {
     </div>
   </div>
 </div>
+</>
 
     )
 }
