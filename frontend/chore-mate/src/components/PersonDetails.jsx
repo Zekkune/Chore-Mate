@@ -5,6 +5,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import REACT_APP_API_URL from '../../globals'
 
 
+
 export default function PersonDetails () {
     const {person_id} = useParams()
     const [person, setPerson] = useState(null)
@@ -47,7 +48,7 @@ export default function PersonDetails () {
                 withCredentials: true // Include cookies
             })
             console.log('Person deleted successfully');
-            navigate('/chore_mate')
+            navigate('/choremate')
         } catch (error) {
             console.error('Error:', error);
         }
@@ -62,6 +63,8 @@ export default function PersonDetails () {
             <h4>{person.profile_img}</h4>
             </div>
             <button className='h-10 bg-blue-500 p-6 hover:bg-blue-800' onClick={() => {deletePerson()}}>delete</button>
+            <Link to='/choremate/' className='bg-blue-400 text-white py-2 px-4 rounded-md shadow hover:bg-blue-500 mt-6'>Return To Choremate</Link>
+            <button onClick={() => navigate(`/api/update_person/${person_id}`)} className='bg-blue-400 text-white py-2 px-4 rounded-md shadow hover:bg-blue-500 mt-6'>Upate This Person</button>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import REACT_APP_API_URL from '../../globals'
 import { useEffect } from 'react';
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const AddPerson = () => {
     const [formData, setFormData] = useState({
@@ -62,7 +63,8 @@ const AddPerson = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-xs mx-auto bg-gray-100 p-6 rounded-md">
+        <div className='w-8/12 bg-slate-400 p-6 flex flex-col justify-center items-center mx-auto'>
+        <form onSubmit={handleSubmit} className="max-w-sm mx-auto bg-gray-100 p-6 rounded-md mt-12 w-8/12">
         <div className="flex flex-col space-y-4">
     <label className="flex items-center space-x-2">
       <input
@@ -75,7 +77,8 @@ const AddPerson = () => {
       <span>Parent User?</span>
     </label>
     <input
-      type="text"
+      type="file"
+      accept='image/*'
       name="profile_img"
       value={profile_img}
       onChange={handleChange}
@@ -114,7 +117,8 @@ const AddPerson = () => {
     </button>
   </div>
 </form>
-
+<Link to='/choremate/' className='bg-blue-400 text-white py-2 px-4 rounded-md shadow hover:bg-blue-500 mt-6'>Return To Choremate</Link>
+</div>
     );
 };
 

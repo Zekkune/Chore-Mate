@@ -12,6 +12,7 @@ import ChoreMateHome from './components/ChoreMateHome'
 import rootReducer from './reducers'
 import AddPerson from './components/AddPerson'
 import PersonDetails from './components/PersonDetails'
+import UpdatePerson from './components/UpdatePerson'
 
 
 
@@ -27,6 +28,7 @@ function App() {
               <Route path='/signup' element={<SignUp/>}/>
               <Route path='/choremate' element={<ChoreMateHome/>}/>
               <Route path='/api/create_person/' element={<AddPerson/>}/>
+              <Route path='/api/update_person/:person_id' element={<UpdatePerson/>}/>
               <Route path='/people/:person_id' element={<PersonDetails/>}/>
               <Route path='/activate/:uid/:token' element={<Activate/>}/>
           </Routes>
