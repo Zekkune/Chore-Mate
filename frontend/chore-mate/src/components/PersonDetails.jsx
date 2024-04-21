@@ -56,15 +56,19 @@ export default function PersonDetails () {
 
     if (!person) return <h1>Loading...</h1>
     return (
-        <div>
-            <div>
-            <h2>{person.first_name}</h2>
-            <h3>age: {person.age}</h3>
-            <h4>{person.profile_img}</h4>
-            </div>
-            <button className='h-10 bg-blue-500 p-6 hover:bg-blue-800' onClick={() => {deletePerson()}}>delete</button>
-            <Link to='/choremate/' className='bg-blue-400 text-white py-2 px-4 rounded-md shadow hover:bg-blue-500 mt-6'>Return To Choremate</Link>
-            <button onClick={() => navigate(`/api/update_person/${person_id}`)} className='bg-blue-400 text-white py-2 px-4 rounded-md shadow hover:bg-blue-500 mt-6'>Upate This Person</button>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-white-100 dark:bg-black">
+        <div className="bg-slate-200 dark:bg-grey p-8 rounded-lg shadow-lg max-w-md w-full">
+        <div className="mb-4 flex flex-row justify-evenly">
+            <h2 className="text-xl font-semibold flex-1">{person.first_name}, {person.age}</h2>
+            <img src={person.profile_img} alt={person.first_name} className="rounded-lg my-4 flex-1 bg-pink-50" />
+           
+        </div>
+        <div className='flex justify-between'>
+        <button className='bg-neonred hover:bg-darkneonred dark:bg-darkneonred dark:hover:bg-neonred text-white py-2 px-4 rounded-md shadow flex-1 mr-2' onClick={() => {deletePerson()}}>Delete {person.first_name}</button>
+        <button onClick={() => navigate(`/api/update_person/${person_id}`)} className='bg-neonred hover:bg-darkneonred dark:bg-darkneonred dark:hover:bg-neonred text-white py-2 px-4 rounded-md shadow flex-1'>Update {person.first_name}</button>
+        </div>
+        <Link to='/choremate/' className='bg-neonred hover:bg-darkneonred dark:bg-darkneonred dark:hover:bg-neonred text-white py-2 px-4 rounded-md shadow block mt-2'>Return To Choremate</Link>
+        </div>
         </div>
     )
 }

@@ -41,7 +41,7 @@ const Login = ({ login, isAuthenticated }) => {
     }
 
     if (isAuthenticated) {
-        navigate('/')
+        navigate('/choremate')
         return null
     }
 
